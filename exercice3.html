@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<title>Exercice 3</title>
+		<style>
+			td {
+				width:50px;
+			}
+			
+			#result {
+				width: 100px;
+			}
+		</style>
+		<script>
+			var expression = "";
+			function addDigit(x) {
+				
+				expression += "";
+				var last = expression.length == 0 ? "" : expression[expression.length -1];
+				if ((x != "+") || (last && last != "+")){
+					expression = expression != 0 ? expression + x : x;				
+				}
+				
+				display(expression);
+			}
+			
+			function compute() {
+				var total = eval(expression);
+				expression = total ? total :  expression;
+				display(expression);
+			}
+			
+			function display(exp) {
+				var result = document.getElementById("result");
+				result.innerHTML = exp ? exp : result.innerHTML;
+			}
+			
+			function cls() {
+				expression = "0";
+				display(expression);
+				alert("Cleared");
+			}
+		</script>
+	<head>
+	<body>
+		<table border="1">
+			<tr>
+				<td id="1" onclick="addDigit(1)">1</td>
+				<td id="2" onclick="addDigit(2)">2</td>
+				<td id="3" onclick="addDigit(3)">3</td>
+			</tr>
+			<tr>
+				<td id="4" onclick="addDigit(4)">4</td>
+				<td id="5" onclick="addDigit(5)">5</td>
+				<td id="6" onclick="addDigit(6)">6</td>
+			</tr>
+			<tr>
+				<td id="7" onclick="addDigit(7)">7</td>
+				<td id="8" onclick="addDigit(8)">8</td>
+				<td id="9" onclick="addDigit(9)">9</td>
+			</tr>
+			<tr>
+				<td id="0" onclick="addDigit(0)">0</td>
+				<td id="plus" onclick="addDigit('+')">+</td>
+				<td id="equals" onclick="compute()">=</td>
+			</tr>
+			<tr>
+				<td id="cls" onclick="cls()">C</td>
+				<td colspan="2" id="result">0</td>
+			</tr>
+		</table>
+	</body>
+</html>
